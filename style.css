@@ -7,13 +7,11 @@
     
     /* --- COULEURS EFFET CALQUE --- */
     /* On utilise RGBA pour la transparence (le dernier chiffre est l'opacité entre 0 et 1) */
-    --calque-body: rgba(255, 255, 255, 0.45); 
-    --calque-flap: rgba(240, 245, 243, 0.6); 
-    --calque-border: 1px solid rgba(255, 255, 255, 0.5);
+    --calque-body: rgba(255, 255, 255, 0.3); /* Plus transparent pour l'effet calque */
+    --calque-flap: rgba(255, 255, 255, 0.4);
     
-    /* Image de fond florale pour le calque (motif subtil blanc) */
-    /* J'utilise une image encodée en base64 pour qu'elle soit directement dans le CSS, c'est un motif de dentelle légère */
-    --floral-pattern: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.5'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    /* Motif floral blanc garanti */
+    --floral-pattern: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 40c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10zM10 10c0-5.523-4.477-10-10-10S-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10zM70 10c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10zM10 70c0-5.523-4.477-10-10-10S-10 64.477-10 70s4.477 10 10 10 10-4.477 10-10zM70 70c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,8 +31,8 @@ h1, h2, h3 { font-family: 'Great Vibes', cursive; font-weight: normal; }
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Un fond légèrement texturé pour faire ressortir le calque */
-    background: linear-gradient(135deg, #e0e5e5 0%, #f3f6f5 100%);
+    /* Un fond plus sombre (type vert forêt profond ou gris chaud) pour faire ressortir le calque */
+    background: linear-gradient(135deg, #1a3a32 0%, #2e4a41 100%); 
     transition: opacity 1s ease-out;
 }
 
@@ -60,15 +58,13 @@ h1, h2, h3 { font-family: 'Great Vibes', cursive; font-weight: normal; }
     width: 100%;
     height: 100%;
     cursor: pointer;
-    /* Effet de profondeur */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    /* Le fond du "sac" de l'enveloppe */
     background-color: var(--calque-body);
-    /* Ajout du motif floral */
-    background-image: var(--floral-pattern);
-    /* Flou d'arrière-plan pour l'effet verre dépoli/calque */
-    backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-    border: var(--calque-border);
+    background-image: var(--floral-pattern); /* Fleurs ici ! */
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    color: white; /* Force le texte éventuel en blanc */
 }
 
 /* Les rabats en CSS */
@@ -97,7 +93,7 @@ h1, h2, h3 { font-family: 'Great Vibes', cursive; font-weight: normal; }
 .envelope .top {
     top: 0; left: 0;
     border-width: 100px 150px 0 150px;
-    border-color: var(--calque-border) transparent transparent transparent;
+    border-color: rgba(255,255,255,0.5) transparent transparent transparent;
     z-index: 100;
     transform-origin: top;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -109,7 +105,7 @@ h1, h2, h3 { font-family: 'Great Vibes', cursive; font-weight: normal; }
 .envelope .bottom {
     bottom: 0; left: 0;
     border-width: 0 150px 100px 150px;
-    border-color: transparent transparent var(--calque-border) transparent;
+    border-color: transparent transparent rgba(255,255,255,0.5) transparent;
     z-index: 90;
 }
 .envelope .bottom::after { clip-path: polygon(50% 0, 0 100%, 100% 100%); bottom: -101px; height: 100px; left: -150px; width: 300px;}
@@ -118,7 +114,7 @@ h1, h2, h3 { font-family: 'Great Vibes', cursive; font-weight: normal; }
 .envelope .left {
     top: 0; left: 0;
     border-width: 100px 0 100px 150px;
-    border-color: transparent transparent transparent var(--calque-border);
+    border-color: transparent transparent transparent rgba(255,255,255,0.4);
     z-index: 95;
 }
 .envelope .left::after { clip-path: polygon(100% 50%, 0 0, 0 100%); left: -151px; width: 150px; top: -100px; height: 200px;}
@@ -127,7 +123,7 @@ h1, h2, h3 { font-family: 'Great Vibes', cursive; font-weight: normal; }
 .envelope .right {
     top: 0; right: 0;
     border-width: 100px 150px 100px 0;
-    border-color: transparent var(--calque-border) transparent transparent;
+    border-color: transparent rgba(255,255,255,0.4) transparent transparent;
     z-index: 95;
 }
 .envelope .right::after { clip-path: polygon(0 50%, 100% 0, 100% 100%); right: -151px; width: 150px; top: -100px; height: 200px;}
@@ -144,7 +140,7 @@ h1, h2, h3 { font-family: 'Great Vibes', cursive; font-weight: normal; }
     /* TA NOUVELLE COULEUR VERT FONCÉ */
     background-color: var(--primary);
     /* Texture papier subtile sur la carte */
-    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    background-image: none;
     z-index: 80;
     transition: all 1s 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
@@ -154,7 +150,7 @@ h1, h2, h3 { font-family: 'Great Vibes', cursive; font-weight: normal; }
     padding: 20px;
     /* Ombre portée pour la décoller du fond */
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    border: 2px solid var(--secondary);
+    border: 1.5px solid var(--secondary);
 }
 
 .letter-content h1 {
