@@ -8,7 +8,6 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
     <div class="envelope-wrapper" id="envelope-section">
         <div class="instruction">Découvrez votre invitation 👆🏻</div>
         
@@ -23,9 +22,9 @@
 
                 <div class="letter">
                     <div class="letter-content">
-                        <h1>Alice & Julien</h1>
+                        <h1>Cécile & Cyrille</h1>
                         <p>ont la joie de vous inviter à leur mariage</p>
-                        <div class="date-seal">24 . 08 . 2026</div>
+                        <div class="date-seal">15 . 08 . 2026</div>
                     </div>
                 </div>
                 <div class="flap left"></div>
@@ -39,7 +38,7 @@
         <header class="hero">
             <div class="hero-overlay">
                 <h2>Nous nous marions !</h2>
-                <p class="hero-date">Samedi 24 Août 2026</p>
+                <p class="hero-date">Samedi 15 Août 2026</p>
                 <p class="location">Château de la Roche, France</p>
             </div>
         </header>
@@ -112,7 +111,7 @@
                 <form action="https://formspree.io/f/maqqawaa" method="POST">
                     <div class="form-group">
                         <label>Votre Nom / Famille</label>
-                        <input type="text" name="name" required>
+                        <input id="family-name-input" type="text" name="name" required>
                     </div>
                     <div class="form-group">
                         <label>Présence</label>
@@ -123,11 +122,11 @@
                     </div>
                     <div class="form-group">
                         <label>Nombre d'adulte</label>
-                        <input type="number" name="adults" min="1" value="1">
+                        <input type="number" name="adults" min="0" value="1">
                     </div>
                     <div class="form-group">
                         <label>Nombre d'enfant</label>
-                        <input type="number" name="children" min="1" value="1">
+                        <input type="number" name="children" min="0" value="1">
                     </div>
                     <div class="form-group">
                         <label>Message ou régime particulier</label>

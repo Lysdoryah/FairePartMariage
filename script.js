@@ -3,9 +3,12 @@ window.onload = function() {
     let hash = window.location.hash.substring(1);
     const nameDisplay = document.getElementById('family-name-display');
     
+
     if (hash && nameDisplay) {
         const cleanName = decodeURIComponent(hash).replace(/-/g, ' ');
+        const nameInput = document.getElementById('family-name-input');
         nameDisplay.innerText = ""+cleanName;
+        nameInput.value = cleanName;
     }
 };
 
@@ -28,7 +31,7 @@ function openEnvelope() {
             envelopeSection.style.display = 'none';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 1000);
-    }, 2000);
+    }, 3500);
 }
 
 // Compte à rebours
