@@ -1,13 +1,13 @@
 :root {
-    --primary: #2e6656; /* Vert foncé invitation */
-    --secondary: #ffffff; /* Or */
+    --primary: #2b5c46; /* Vert foncé invitation */
+    --secondary:rgb(105, 133, 115);
     --bg-dark: rgb(136, 136, 172);/* Fond pour faire ressortir le calque */
     --text-light: #f4f4f4;
     --calque-white: rgba(211, 209, 209, 0.432);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
+body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden; color: #444; }
 
 /* --- SECTION D'OUVERTURE (ENVELOPPE) --- */
 .envelope-wrapper {
@@ -22,20 +22,11 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
 
 .instruction {
     margin-bottom: 40px;
-    color: var(--secondary);
+    color: rgb(255, 255, 255);
     letter-spacing: 2px;
     text-transform: uppercase;
     animation: pulse 2s infinite;
     text-align: center;
-}
-
-/* Texte adaptatif PC / Mobile */
-.instruction .pc-text { display: inline; }
-.instruction .mobile-text { display: none; }
-
-@media (max-width: 1024px) {
-    .instruction .pc-text { display: none; }
-    .instruction .mobile-text { display: inline; }
 }
 
 .family-name {
@@ -45,7 +36,7 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     text-align: center;
     font-family: 'Great Vibes', cursive;
     font-size: 2.8rem;
-    color: var(--secondary);
+    color: white;
     transition: opacity 0.5s;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
@@ -75,13 +66,14 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 280px; height: 180px;
-    background: var(--primary);
+    background: #194e3f;
+    box-shadow: inset 0px 0px 20px 3px #143f33; 
     color: white; padding: 20px; text-align: center;
     z-index: 20; 
     transition: transform 0.8s 0.5s ease-in-out;
 }
 
-.letter h1 { font-family: 'Great Vibes'; font-size: 2.2rem; color: var(--secondary); margin-bottom: 10px; }
+.letter h1 { font-family: 'Great Vibes'; font-size: 2.2rem; color: white; margin-bottom: 10px; }
 
 /* LES RABATS */
 .flap {
@@ -93,6 +85,7 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     border-radius: 10px;
     border-width: 100px 150px 0 150px;
     border-color: rgba(255,255,255,0.4) transparent transparent transparent;
+    box-shadow: inset 0px 0px 20px 5px rgba(124, 124, 124, 0.4); 
     z-index: 50; /* Doit être au-dessus du reste pour fermer */
     transform-origin: top;
     transition: transform 0.6s 0.2s ease-in-out;
@@ -107,6 +100,7 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     width: 100%;
     height: 100%;
     background-color: rgba(255,255,255,0.4);
+    box-shadow: inset 0px 0px 20px 5px rgba(124, 124, 124, 0.4); 
     -webkit-clip-path:polygon(0% 0%, 50% 50%, 50% 50%, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
     clip-path: polygon(0% 0%, 50% 50%, 50% 50%, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
 }
@@ -139,34 +133,131 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     opacity: 0; 
     transition-delay: 1s ;
     pointer-events: none;
-    
 }
 
 .envelope.open .letter { 
     transform: translate(-50%, -260px); 
-    
     z-index: 20; 
 }
+
 
 /* --- CONTENU DU SITE (APRÈS OUVERTURE) --- */
 .main-content { display: none; opacity: 0; transition: opacity 1s; }
 .main-content.visible { display: block; opacity: 1; }
 
 .hero {
-    height: 80vh;
-    background: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1500&q=80') center/cover;
-    display: flex; align-items: center; justify-content: center;
+    padding: 60px 20px;
+    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://source.unsplash.com/random/1600x900/?wedding,flowers') no-repeat center center/cover;
 }
 
-.hero-overlay { background: rgba(0,0,0,0.5); padding: 40px; color: white; text-align: center; border: 2px solid var(--secondary); }
-.hero h2 { font-size: 3.5rem; color: var(--secondary); font-family: 'Great Vibes'; }
+.hero h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: var(--primary);
+}
 
-.section-container { padding: 80px 20px; max-width: 800px; margin: 0 auto; text-align: center; }
+.hero-overlay { background: rgb(105, 133, 115); padding: 40px; color: white; text-align: center; border: 2px solid var(--secondary); }
+
+.section-container { padding: 80px 20px; max-width: 100%; margin: 0 auto; text-align: center; }
 .time-box span { display: block; font-size: 2.5rem; color: var(--primary); font-weight: bold; }
-#countdown { display: flex; justify-content: center; gap: 20px; }
 
-.timeline-item { margin-bottom: 30px; border-left: 2px solid var(--secondary); padding-left: 20px; text-align: left; }
 
+/* Compte à rebours */
+.countdown-section {
+    padding: 40px;
+    background: #8da399;
+    color: white;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+#countdown div {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+}
+#countdown .time-box{
+    width: 80px;
+    border: solid 3px #f9f9f9;
+    border-radius: 20px;
+}
+
+#countdown span {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+/* Timeline */
+.timeline {
+    padding: 50px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    border-left: 2px solid var(--secondary);
+    padding-left: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background: var(--secondary);
+    border-radius: 50%;
+}
+
+.time {
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* Infos */
+.infos {
+    padding: 50px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.infos-item {
+    border-left: 2px solid var(--secondary);
+    padding-left: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background: var(--secondary);
+    border-radius: 50%;
+}
+
+.time {
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/*RSVP*/
 .rsvp-card { background: #f9f9f9; padding: 40px; border-radius: 10px; border: 1px solid var(--primary); }
 .form-group { margin-bottom: 15px; text-align: left; }
 input, select, textarea { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
@@ -175,6 +266,8 @@ button:hover { background: #1e453a; }
 
 footer { background: var(--primary); color: white; padding: 40px; text-align: center; }
 .footer-names { font-family: 'Great Vibes'; font-size: 2rem; color: var(--secondary); }
+
+
 
 /* --- KEYFRAMES & RESPONSIVE --- */
 @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }

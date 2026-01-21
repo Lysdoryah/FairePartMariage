@@ -32,7 +32,7 @@ function openEnvelope() {
 }
 
 // Compte à rebours
-const targetDate = new Date('August 24, 2026 14:00:00').getTime();
+const targetDate = new Date('August 15, 2026 14:00:00').getTime();
 setInterval(() => {
     const now = new Date().getTime();
     const diff = targetDate - now;
