@@ -1,58 +1,55 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Notre mariage</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faire-Part de Mariage</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ENVELOPPE -->
-    <div id="envelopeScreen" class="screen envelope-screen">
-        <div class="envlope-wrapper">
-          <div id="envelope" class="close">
-            <div class="front flap"></div>
-            <div class="front pocket"></div>
-            <div class="letter">
-              <div class="words line1"></div>
-              <div class="words line2"></div>
-              <div class="words line3"></div>
-              <div class="words line4"></div>
-            </div>
-            <div class="hearts">
-              <div class="heart a1"></div>
-              <div class="heart a2"></div>
-              <div class="heart a3"></div>
-            </div>
-          </div>
-        </div>
-        <p class="hint">Touchez pour ouvrir</p>
-      </div>      
-    
-    <!-- INVITATION -->
-    <div id="invitationScreen" class="screen invitation-screen hidden">
-      <section class="card">
-        <h1>Marie & Julien</h1>
-        <p class="subtitle">
-          ont la joie de vous inviter à célébrer leur mariage
-        </p>
-    
-        <div class="infos">
-          <p>📅 12 juillet 2026</p>
-          <p>📍 Château de la Roseraie</p>
-        </div>
-      </section>
-    
-      <section class="card">
-        <h2>Programme</h2>
-        <p>15h — Cérémonie</p>
-        <p>18h — Cocktail</p>
-        <p>20h — Dîner & fête</p>
-      </section>
+<div id="intro-screen" class="screen">
+    <div class="intro-content">
+        <h1>Nous nous marions !</h1>
+        <p>Clique pour ouvrir l’invitation 💍</p>
     </div>
-    
-    <script src="script.js"></script>
+</div>
+
+<header id="main-content" class="hidden">
+    <img src="assets/logo.png" alt="Mariage Logo" class="logo">
+    <section class="hero">
+        <h1>Emma & Lucas</h1>
+        <p class="date">28 Août 2026</p>
+        <div id="countdown"></div>
+    </section>
+
+    <section class="story">
+        <h2>Notre Histoire</h2>
+        <p>Un coup de foudre lors d’un voyage à Paris... 💕</p>
+        <div class="photos">
+            <img src="assets/photo-couple1.jpg" alt="Photo du couple">
+            <img src="assets/photo-couple2.jpg" alt="Photo du couple">
+        </div>
+    </section>
+
+    <section class="rsvp">
+        <h2>Répondez s’il vous plaît</h2>
+        <form id="rsvp-form">
+            <input type="text" name="name" placeholder="Votre nom" required>
+            <input type="email" name="email" placeholder="Votre e-mail" required>
+            <button type="submit">Envoyer</button>
+        </form>
+        <p class="thanks hidden">Merci ! On a hâte de vous voir 🎉</p>
+    </section>
+
+    <footer>
+        <p>À bientôt ! 💖</p>
+    </footer>
+</header>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,154 +1,96 @@
-/* ---------------- BODY ---------------- */
-body {
+/* Base */
+* {
     margin: 0;
-    font-family: Georgia, serif;
-    background: linear-gradient(180deg, #f7efe5, #ffffff);
-    overflow: hidden;
-  }
-  
-  /* ---------------- ÉCRANS ---------------- */
-  .screen {
-    height: 100vh;
-    width: 100%;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  /* ---------------- ENVELOPPE ---------------- */
-  .envelope-screen {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .envlope-wrapper {
-    height: 300px;
-    position: relative;
-  }
-  
-  #envelope {
-    position: relative;
-    width: 280px;
-    height: 180px;
-    margin: auto;
-    cursor: pointer;
-  }
-  
-  /* Rabat triangle */
-  .front.flap {
-    position: absolute;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Intro Screen */
+#intro-screen {
+    position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    height: 80px;
-    background: #eee;
-    clip-path: polygon(0 100%, 50% 0, 100% 100%);
-    transform-origin: top center;
-    z-index: 2;
-    transition: transform 0.8s ease;
-  }
-  
-  /* Poche rectangulaire de l'enveloppe */
-  .front.pocket {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    background: #0077B2;
-    border-radius: 6px;
-    z-index: 1;
-  }
-  
-  /* Lettre à l'intérieur */
-  .letter {
-    position: absolute;
-    background-color: #fff;
-    width: 90%;
-    height: 90%;
-    top: 5%;
-    left: 5%;
-    border-radius: 6px;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
-    transform: translateY(0);
-    transition: transform 0.8s ease;
-    z-index: 3;
-  }
-  
-  /* Cœurs animés */
-  .hearts .heart {
-    position: absolute;
-    bottom: 0;
-    width: 12px;
-    height: 12px;
-    background: red;
-    border-radius: 50%;
-    opacity: 0;
-    animation: slideUp 4s linear 1 forwards;
-  }
-  
-  .a1 { left: 20%; animation-delay: .7s; }
-  .a2 { left: 55%; animation-delay: .9s; }
-  .a3 { left: 10%; animation-delay: 1.1s; }
-  
-  /* Animation de montée des cœurs */
-  @keyframes slideUp {
-    0% { top: 0; opacity: 1; }
-    100% { top: -300px; opacity: 0; }
-  }
-  
-  /* Animation d'ouverture */
-  .open .flap {
-    transform: rotateX(-180deg);
-  }
-  .open .letter {
-    transform: translateY(-60px);
-  }
-  
-  /* Sceau décoratif */
-  .seal {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2rem;
-    z-index: 4;
-  }
-  
-  /* Hint */
-  .hint {
-    margin-top: 1.2rem;
-    color: #777;
-    font-size: 0.9rem;
-  }
-  
-  /* ---------------- INVITATION ---------------- */
-  .invitation-screen {
-    padding: 1.5rem 1rem 3rem;
-    overflow-y: auto;
-  }
-  
-  .card {
-    background: white;
-    max-width: 420px;
-    margin: 1.5rem auto;
-    padding: 2rem 1.5rem;
-    border-radius: 16px;
+    height: 100%;
+    background: url('assets/bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    animation: fadeIn 2s ease;
+}
+
+#intro-screen h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: 4rem;
+    color: white;
+}
+
+#intro-screen p {
+    color: white;
+    margin-top: 1rem;
+    animation: pulse 2s infinite;
+}
+
+/* Hidden content */
+.hidden { display: none; }
+
+/* Main Header */
+header {
+    padding: 2rem;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  }
-  
-  h1 {
-    font-size: 2.4rem;
-  }
-  
-  .subtitle {
-    font-size: 1.1rem;
-    margin: 1rem 0;
-  }
-  
-  .infos {
-    margin-top: 1.5rem;
-  }
-  
+    background: #fff;
+}
+
+/* Hero */
+.hero {
+    margin-top: 2rem;
+}
+.hero .date {
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+}
+
+/* Countdown */
+#countdown {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+/* Story */
+.story {
+    margin-top: 3rem;
+}
+
+.story .photos img {
+    width: 45%;
+    margin: 1rem 2%;
+    border-radius: 8px;
+}
+
+/* RSVP Form */
+.rsvp input {
+    width: 70%;
+    padding: 0.6rem;
+    margin: 0.5rem 0;
+}
+.rsvp button {
+    padding: 0.7rem 1.5rem;
+    background: #d17b7b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
