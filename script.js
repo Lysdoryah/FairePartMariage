@@ -1,13 +1,13 @@
-// Animation simple à l’ouverture
-document.addEventListener("DOMContentLoaded", () => {
-    const card = document.querySelector(".card");
-    card.style.opacity = 0;
-    card.style.transform = "translateY(20px)";
-  
-    setTimeout(() => {
-      card.style.transition = "all 0.8s ease";
-      card.style.opacity = 1;
-      card.style.transform = "translateY(0)";
-    }, 100);
-  });
-  
+const envelope = document.getElementById("envelope");
+const invitation = document.getElementById("invitation");
+const envelopeBox = document.querySelector(".envelope");
+
+envelope.addEventListener("click", () => {
+  envelopeBox.classList.add("open");
+
+  setTimeout(() => {
+    envelope.style.display = "none";
+    invitation.classList.remove("hidden");
+    document.body.style.overflow = "auto";
+  }, 800);
+});
