@@ -10,13 +10,26 @@
 <body>
 
     <!-- ENVELOPPE -->
-    <div id="envelopeScreen" class="screen envelope-screen">
-      <div id="envelope" class="envelope">
-        <div class="flap"></div> <!-- le rabat -->
-        <div class="body"></div> <!-- le rectangle -->
-        <div class="seal">💍</div>
-      </div>
-      <p class="hint">Touchez pour ouvrir</p>
+    <div class="envlope-wrapper">
+        <div id="envelope" class="close">
+            <div class="front flap"></div>
+            <div class="front pocket"></div>
+            <div class="letter">
+                <div class="words line1"></div>
+                <div class="words line2"></div>
+                <div class="words line3"></div>
+                <div class="words line4"></div>
+            </div>
+            <div class="hearts">
+                <div class="heart a1"></div>
+                <div class="heart a2"></div>
+                <div class="heart a3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="reset">
+        <button id="open">Open</button>
+        <button id="reset">Reset</button>
     </div>
     
     <!-- INVITATION -->
