@@ -89,7 +89,7 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     left: 50%;
     width: 80px; /* Tu peux ajuster la taille ici */
     height: 80px;
-    background-image: url('assets/sceau-coeur.png'); /* METS LE LIEN DE TON IMAGE ICI */
+    background-image: url('assets/sceau_coeur.png'); /* METS LE LIEN DE TON IMAGE ICI */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
