@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background: linear-gradient(180deg, #f7efe5, #ffffff);
+    overflow: hidden;
+  }
+  
+  .screen {
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* -------- ENVELOPPE -------- */
+/* Fond et enveloppe complète */
+.envlope-wrapper {
+    height: 300px;
+    position: relative;
+  }
+  
+  #envelope {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    margin: auto;
+    background-color: #0077B2;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.2);
+  }
+  
+  /* rabat & poche */
+  .front.flap {
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-bottom: 82px solid #0077B2;
+    transform-origin: top;
+    transition: transform .4s ease;
+  }
+  
+  .front.pocket {
+    border-left: 140px solid #0077B2;
+    border-right: 140px solid #0077B2;
+    border-bottom: 82px solid #005f99;
+  }
+  
+  /* lettre à l’intérieur */
+  .letter {
+    position: absolute;
+    background-color: #fff;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+    border-radius: 6px;
+    box-shadow: 0 2px 26px rgba(0,0,0,.12);
+    transform: translateY(0);
+    transition: transform .4s ease;
+  }
+  
+  /* petits cœurs animés */
+  .hearts .heart {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    animation: slideUp 4s linear 1 forwards;
+  }
+  .a1 { left: 20%; animation-delay: .7s; }
+  .a2 { left: 55%; animation-delay: .9s; }
+  .a3 { left: 10%; animation-delay: 1.1s; }
+  
+  /* montée et petite oscillation */
+  @keyframes slideUp {
+    0% { top: 0; opacity: 1; }
+    100% { top: -300px; opacity: 0; }
+  }
+  
+  /* version ouverte */
+  .open .flap {
+    transform: rotateX(180deg);
+  }
+  .open .letter {
+    transform: translateY(-60px);
+  }
+  
+  
+  /* -------- INVITATION -------- */
+  .invitation-screen {
+    padding: 1.5rem 1rem 3rem;
+    overflow-y: auto;
+  }
+  
+  .card {
+    background: white;
+    max-width: 420px;
+    margin: 1.5rem auto;
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  
+  h1 {
+    font-size: 2.4rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    margin: 1rem 0;
+  }
+  
+  .infos {
+    margin-top: 1.5rem;
+  }
+  
+
+  
