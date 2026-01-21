@@ -28,19 +28,12 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     animation: pulse 2s infinite;
 }
 
-.instruction .pc-text { display: inline; }
-.instruction .mobile-text { display: none; }
-@media (max-width: 1024px) {
-    .instruction .pc-text { display: none; }
-    .instruction .mobile-text { display: inline; }
-}
-
 .family-name {
     position: absolute;
     top: -70px;
     width: 100%;
     text-align: center;
-    font-family: 'Great Vibes', cursive;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 2.8rem;
     color: var(--secondary);
     transition: opacity 0.5s;
@@ -91,17 +84,25 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
 
 /* Sceau de cire */
 .wax-seal {
-    position: absolute; top: 50%; left: 50%;
-    width: 60px; height: 60px;
-    background: #a32626; border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px; /* Tu peux ajuster la taille ici */
+    height: 80px;
+    background-image: url('assets/sceau-coeur.png'); /* METS LE LIEN DE TON IMAGE ICI */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
     transform: translate(-50%, -50%);
     z-index: 110;
-    display: flex; justify-content: center; align-items: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    transition: opacity 0.4s;
+    
+    /* Optionnel : ajoute une ombre pour donner du relief à ton image */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); 
+    
+    transition: opacity 0.4s ease;
+    cursor: pointer;
 }
-.seal-initials { color: var(--secondary); font-family: 'Great Vibes'; font-size: 1.2rem; }
-
 .envelope.open .top { transform: rotateX(180deg); z-index: 50; }
 .envelope.open .wax-seal { opacity: 0; }
 

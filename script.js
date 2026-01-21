@@ -6,7 +6,7 @@ window.onload = function() {
     
     if (hash && nameDisplay) {
         const cleanName = hash.replace(/-/g, ' ');
-        nameDisplay.innerText = "Pour la " + cleanName;
+        nameDisplay.innerText = "Pour " + cleanName;
     }
 };
 
