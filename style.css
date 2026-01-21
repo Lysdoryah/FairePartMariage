@@ -148,7 +148,7 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
 
 .envelope.open .letter { 
     transform: translate(-50%, -260px); 
-    z-index: 100; /* Devient l'élément le plus haut pour sortir */
+    z-index: 25; /* Devient l'élément le plus haut pour sortir */
 }
 
 /* --- CONTENU DU SITE (APRÈS OUVERTURE) --- */
