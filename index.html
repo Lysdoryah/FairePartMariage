@@ -10,73 +10,135 @@
 </head>
 <body>
 
-    <div class="envelope-container" id="envelope-section">
-        <div class="instruction">Touchez pour ouvrir</div>
-        <div class="envelope" onclick="openEnvelope()">
-            <div class="flap top"></div>
-            <div class="pocket"></div>
-            <div class="letter">
-                <div class="letter-content">
-                    <h1>Alice & Julien</h1>
-                    <p>ont la joie de vous inviter à leur mariage</p>
-                    <div class="date-seal">24 . 08 . 2026</div>
+    <div class="envelope-wrapper" id="envelope-section">
+        <div class="instruction">Touchez pour dévoiler</div>
+        <div class="envelope-scaler">
+             <div class="envelope" onclick="openEnvelope()">
+                <div class="flap top"></div>
+                <div class="pocket"></div>
+                <div class="letter">
+                    <div class="letter-content">
+                        <h1>Alice & Julien</h1>
+                        <p>ont la joie de vous inviter à leur mariage</p>
+                        <div class="date-seal">24 . 08 . 2026</div>
+                    </div>
                 </div>
+                <div class="flap left"></div>
+                <div class="flap right"></div>
+                <div class="flap bottom"></div>
             </div>
-            <div class="flap left"></div>
-            <div class="flap right"></div>
-            <div class="flap bottom"></div>
         </div>
+       
     </div>
 
     <main class="main-content" id="full-content">
         
         <header class="hero">
-            <h2>Nous nous marions !</h2>
-            <p class="hero-date">Samedi 24 Août 2026</p>
-            <p class="location">Château de la Roche, France</p>
+            <div class="hero-overlay">
+                <h2>Nous nous marions !</h2>
+                <p class="hero-date">Samedi 24 Août 2026</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Château de la Roche, France</p>
+            </div>
         </header>
 
-        <section class="countdown-section">
+        <section class="section-container countdown-section">
             <h3>Le grand jour arrive dans...</h3>
             <div id="countdown">
-                <div><span id="days">00</span>Jours</div>
-                <div><span id="hours">00</span>Heures</div>
-                <div><span id="minutes">00</span>Minutes</div>
-                <div><span id="seconds">00</span>Secondes</div>
+                <div class="time-box"><span id="days">00</span>Jours</div>
+                <div class="time-box"><span id="hours">00</span>Heures</div>
+                <div class="time-box"><span id="minutes">00</span>Minutes</div>
+                <div class="time-box"><span id="seconds">00</span>Secondes</div>
             </div>
         </section>
 
-        <section class="timeline">
-            <h3>Le Programme</h3>
-            <div class="timeline-item">
-                <span class="time">14:00</span>
-                <span class="event">Cérémonie Civile</span>
-            </div>
-            <div class="timeline-item">
-                <span class="time">16:00</span>
-                <span class="event">Vin d'honneur</span>
-            </div>
-            <div class="timeline-item">
-                <span class="time">20:00</span>
-                <span class="event">Dîner & Soirée</span>
+        <section class="section-container timeline-section">
+            <h3>Le Programme de la journée</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-ring"></i></div>
+                    <div class="timeline-content">
+                        <span class="time">14:00</span>
+                        <h4>Cérémonie Civile</h4>
+                        <p>Mairie de Lyon 2ème</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-glass-cheers"></i></div>
+                    <div class="timeline-content">
+                        <span class="time">16:30</span>
+                        <h4>Vin d'honneur & Photos</h4>
+                        <p>Dans les jardins du Château</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="timeline-content">
+                        <span class="time">20:00</span>
+                        <h4>Dîner de Gala</h4>
+                        <p>Suivi de la soirée dansante jusqu'au bout de la nuit !</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="rsvp">
-            <h3>Répondez-nous</h3>
-            <form id="rsvp-form" onsubmit="event.preventDefault(); alert('Merci pour votre réponse !');">
-                <input type="text" placeholder="Votre Nom" required>
-                <select>
-                    <option>Je serai présent(e)</option>
-                    <option>Je ne pourrai pas venir</option>
-                </select>
-                <input type="number" placeholder="Nombre de personnes" min="1">
-                <button type="submit">Confirmer</button>
-            </form>
+        <section class="section-container info-section">
+             <h3>Infos Pratiques</h3>
+             <div class="info-grid">
+                 <div class="info-box">
+                     <i class="fas fa-car"></i>
+                     <h4>Accès & Parking</h4>
+                     <p>Un grand parking gratuit est disponible à l'entrée du domaine. Pensez au covoiturage !</p>
+                 </div>
+                 <div class="info-box">
+                    <i class="fas fa-bed"></i>
+                    <h4>Hébergements</h4>
+                    <p>Une liste d'hôtels et chambres d'hôtes à proximité est disponible sur demande.</p>
+                </div>
+             </div>
+        </section>
+
+        <section class="section-container rsvp-section">
+            <div class="rsvp-card">
+                <h3>Répondez-nous avant le 30 Juin</h3>
+                <form id="rsvp-form" onsubmit="event.preventDefault(); alert('Merci, votre réponse a bien été simulée !');">
+                    <div class="form-group">
+                        <label for="name">Vos Noms & Prénoms</label>
+                        <input type="text" id="name" placeholder="Ex: Famille Dupont" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="status">Serez-vous des nôtres ?</label>
+                        <select id="status" required>
+                            <option value="">Choisissez...</option>
+                            <option value="present">Avec grand plaisir !</option>
+                            <option value="absent">Malheureusement non</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guests">Nombre d'adultes</label>
+                        <input type="number" id="guests" min="1" placeholder="1">
+                    </div>
+
+                     <div class="form-group">
+                        <label for="children">Nombre d'enfants</label>
+                        <input type="number" id="children" min="0" placeholder="0">
+                    </div>
+
+                     <div class="form-group">
+                        <label for="message">Un petit mot ? (Régime alimentaire...)</label>
+                        <textarea id="message" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit">Confirmer notre présence</button>
+                </form>
+            </div>
         </section>
 
         <footer>
-            <p>Avec tout notre amour, Alice & Julien</p>
+            <p class="footer-names">Alice & Julien</p>
+            <p>— 24.08.2026 —</p>
+            <small>Fait avec amour</small>
         </footer>
     </main>
 
