@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariage de Alice & Julien</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mariage de Alice & Julien</title> <link rel="icon" type="image/png" href="assets/favicon.png"> <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <div class="envelope-wrapper" id="envelope-section">
-        <div class="instruction">Touchez pour dévoiler</div>
+        <div class="instruction">
+            <span class="pc-text">Cliquez pour ouvrir</span>
+            <span class="mobile-text">Touchez pour ouvrir</span>
+        </div>
+        
         <div class="envelope-scaler">
-             <div class="envelope" onclick="openEnvelope()">
+            <div id="family-name-display" class="family-name"></div>
+
+            <div class="envelope" onclick="openEnvelope()">
                 <div class="flap top"></div>
                 <div class="pocket"></div>
+                
+                <div class="wax-seal" id="main-seal">
+                    <span class="seal-initials">A&J</span>
+                </div>
+
                 <div class="letter">
                     <div class="letter-content">
                         <h1>Alice & Julien</h1>
@@ -28,16 +38,14 @@
                 <div class="flap bottom"></div>
             </div>
         </div>
-       
     </div>
 
     <main class="main-content" id="full-content">
-        
         <header class="hero">
             <div class="hero-overlay">
                 <h2>Nous nous marions !</h2>
                 <p class="hero-date">Samedi 24 Août 2026</p>
-                <p class="location"><i class="fas fa-map-marker-alt"></i> Château de la Roche, France</p>
+                <p class="location">Château de la Roche, France</p>
             </div>
         </header>
 
@@ -52,93 +60,63 @@
         </section>
 
         <section class="section-container timeline-section">
-            <h3>Le Programme de la journée</h3>
+            <h3>Le Programme</h3>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-ring"></i></div>
+                    <div class="timeline-icon">1</div>
                     <div class="timeline-content">
                         <span class="time">14:00</span>
                         <h4>Cérémonie Civile</h4>
-                        <p>Mairie de Lyon 2ème</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-glass-cheers"></i></div>
+                    <div class="timeline-icon">2</div>
                     <div class="timeline-content">
                         <span class="time">16:30</span>
-                        <h4>Vin d'honneur & Photos</h4>
-                        <p>Dans les jardins du Château</p>
+                        <h4>Vin d'honneur</h4>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="timeline-icon">3</div>
                     <div class="timeline-content">
                         <span class="time">20:00</span>
-                        <h4>Dîner de Gala</h4>
-                        <p>Suivi de la soirée dansante jusqu'au bout de la nuit !</p>
+                        <h4>Dîner & Soirée</h4>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-container info-section">
-             <h3>Infos Pratiques</h3>
-             <div class="info-grid">
-                 <div class="info-box">
-                     <i class="fas fa-car"></i>
-                     <h4>Accès & Parking</h4>
-                     <p>Un grand parking gratuit est disponible à l'entrée du domaine. Pensez au covoiturage !</p>
-                 </div>
-                 <div class="info-box">
-                    <i class="fas fa-bed"></i>
-                    <h4>Hébergements</h4>
-                    <p>Une liste d'hôtels et chambres d'hôtes à proximité est disponible sur demande.</p>
-                </div>
-             </div>
-        </section>
-
         <section class="section-container rsvp-section">
             <div class="rsvp-card">
-                <h3>Répondez-nous avant le 30 Juin</h3>
-                <form id="rsvp-form" onsubmit="event.preventDefault(); alert('Merci, votre réponse a bien été simulée !');">
+                <h3>RSVP</h3>
+                <form action="https://formspree.io/f/maqqawaa" method="POST">
                     <div class="form-group">
-                        <label for="name">Vos Noms & Prénoms</label>
-                        <input type="text" id="name" placeholder="Ex: Famille Dupont" required>
+                        <label>Votre Nom / Famille</label>
+                        <input type="text" name="name" required>
                     </div>
-                    
                     <div class="form-group">
-                        <label for="status">Serez-vous des nôtres ?</label>
-                        <select id="status" required>
-                            <option value="">Choisissez...</option>
-                            <option value="present">Avec grand plaisir !</option>
-                            <option value="absent">Malheureusement non</option>
+                        <label>Présence</label>
+                        <select name="status" required>
+                            <option value="present">Sera présent</option>
+                            <option value="absent">Ne pourra pas être présent</option>
                         </select>
                     </div>
-
                     <div class="form-group">
-                        <label for="guests">Nombre d'adultes</label>
-                        <input type="number" id="guests" min="1" placeholder="1">
+                        <label>Nombre de personnes</label>
+                        <input type="number" name="guests" min="1" value="1">
                     </div>
-
-                     <div class="form-group">
-                        <label for="children">Nombre d'enfants</label>
-                        <input type="number" id="children" min="0" placeholder="0">
+                    <div class="form-group">
+                        <label>Message ou régime particulier</label>
+                        <textarea name="message"></textarea>
                     </div>
-
-                     <div class="form-group">
-                        <label for="message">Un petit mot ? (Régime alimentaire...)</label>
-                        <textarea id="message" rows="3"></textarea>
-                    </div>
-                    
-                    <button type="submit">Confirmer notre présence</button>
+                    <button type="submit">Envoyer la réponse</button>
                 </form>
             </div>
         </section>
 
         <footer>
             <p class="footer-names">Alice & Julien</p>
-            <p>— 24.08.2026 —</p>
-            <small>Fait avec amour</small>
+            <p>24.08.2026</p>
         </footer>
     </main>
 
