@@ -1,96 +1,265 @@
-/* Base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+:root {
+    --primary: #8da399; /* Vert sauge */
+    --secondary: #d4af37; /* Or */
+    --bg-color: #f9f9f9;
+    --paper-color: #fff;
+    --envelope-color: #8da399;
+    --envelope-dark: #7a8f85;
 }
 
-/* Intro Screen */
-#intro-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('assets/bg.jpg') center/cover no-repeat;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Lato', sans-serif;
+    color: #444;
+    overflow-x: hidden;
+}
+
+/* --- ENVELOPPE STYLES --- */
+.envelope-container {
+    height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    animation: fadeIn 2s ease;
+    justify-content: center;
+    align-items: center;
+    background: #eef2f3;
+    transition: opacity 1s ease;
 }
 
-#intro-screen h1 {
-    font-family: "Great Vibes", cursive;
-    font-size: 4rem;
-    color: white;
-}
-
-#intro-screen p {
-    color: white;
-    margin-top: 1rem;
+.instruction {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: var(--primary);
     animation: pulse 2s infinite;
 }
 
-/* Hidden content */
-.hidden { display: none; }
-
-/* Main Header */
-header {
-    padding: 2rem;
-    text-align: center;
-    background: #fff;
-}
-
-/* Hero */
-.hero {
-    margin-top: 2rem;
-}
-.hero .date {
-    font-size: 1.4rem;
-    margin: 0.5rem 0;
-}
-
-/* Countdown */
-#countdown {
-    font-size: 2rem;
-    margin-top: 1rem;
-}
-
-/* Story */
-.story {
-    margin-top: 3rem;
-}
-
-.story .photos img {
-    width: 45%;
-    margin: 1rem 2%;
-    border-radius: 8px;
-}
-
-/* RSVP Form */
-.rsvp input {
-    width: 70%;
-    padding: 0.6rem;
-    margin: 0.5rem 0;
-}
-.rsvp button {
-    padding: 0.7rem 1.5rem;
-    background: #d17b7b;
-    color: white;
-    border: none;
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: var(--envelope-dark);
     cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Les rabats de l'enveloppe */
+.flap {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.envelope .top {
+    top: 0;
+    left: 0;
+    border-width: 100px 150px 0 150px;
+    border-color: var(--envelope-color) transparent transparent transparent;
+    z-index: 100;
+    transform-origin: top;
+    transition: transform 0.6s 0.2s ease-in-out;
+}
+
+.envelope .bottom {
+    bottom: 0;
+    left: 0;
+    border-width: 0 150px 100px 150px;
+    border-color: transparent transparent var(--envelope-color) transparent;
+    z-index: 99;
+}
+
+.envelope .left {
+    top: 0;
+    left: 0;
+    border-width: 100px 0 100px 150px;
+    border-color: transparent transparent transparent var(--envelope-dark);
+    z-index: 98;
+}
+
+.envelope .right {
+    top: 0;
+    right: 0;
+    border-width: 100px 150px 100px 0;
+    border-color: transparent var(--envelope-dark) transparent transparent;
+    z-index: 98;
+}
+
+/* La carte à l'intérieur */
+.letter {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 280px;
+    height: 180px;
+    background: var(--paper-color);
+    z-index: 90;
+    transition: transform 0.8s 0.8s ease-in-out, z-index 0.1s 0.8s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.letter-content h1 {
+    font-family: 'Great Vibes', cursive;
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.date-seal {
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--secondary);
+    border-top: 1px solid var(--secondary);
+    border-bottom: 1px solid var(--secondary);
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+/* --- ANIMATION D'OUVERTURE --- */
+.envelope.open .top {
+    transform: rotateX(180deg);
+    z-index: 50; /* Passe derrière la lettre */
+}
+
+.envelope.open .letter {
+    transform: translateY(-120px); /* La lettre sort */
+    z-index: 101; /* Passe devant tout */
+}
+
+/* --- CONTENU PRINCIPAL (Caché au début) --- */
+.main-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.main-content.visible {
+    display: block;
+    opacity: 1;
+}
+
+.hero {
+    padding: 60px 20px;
+    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://source.unsplash.com/random/1600x900/?wedding,flowers') no-repeat center center/cover;
+}
+
+.hero h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: var(--primary);
+}
+
+.hero-date {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin: 20px 0;
+}
+
+/* Compte à rebours */
+.countdown-section {
+    padding: 40px;
+    background: var(--primary);
+    color: white;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+#countdown div {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+}
+
+#countdown span {
+    font-size: 2rem;
     font-weight: bold;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Timeline */
+.timeline {
+    padding: 50px 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
+
+.timeline-item {
+    border-left: 2px solid var(--secondary);
+    padding-left: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background: var(--secondary);
+    border-radius: 50%;
+}
+
+.time {
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* RSVP */
+.rsvp {
+    background: #fff;
+    padding: 50px 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 8px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #b5952f;
+}
+
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .hero h2 { font-size: 3rem; }
+    #countdown { gap: 15px; }
 }

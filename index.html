@@ -3,53 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faire-Part de Mariage</title>
+    <title>Mariage de Alice & Julien</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<div id="intro-screen" class="screen">
-    <div class="intro-content">
-        <h1>Nous nous marions !</h1>
-        <p>Clique pour ouvrir l’invitation 💍</p>
-    </div>
-</div>
-
-<header id="main-content" class="hidden">
-    <img src="assets/logo.png" alt="Mariage Logo" class="logo">
-    <section class="hero">
-        <h1>Emma & Lucas</h1>
-        <p class="date">28 Août 2026</p>
-        <div id="countdown"></div>
-    </section>
-
-    <section class="story">
-        <h2>Notre Histoire</h2>
-        <p>Un coup de foudre lors d’un voyage à Paris... 💕</p>
-        <div class="photos">
-            <img src="assets/photo-couple1.jpg" alt="Photo du couple">
-            <img src="assets/photo-couple2.jpg" alt="Photo du couple">
+    <div class="envelope-container" id="envelope-section">
+        <div class="instruction">Touchez pour ouvrir</div>
+        <div class="envelope" onclick="openEnvelope()">
+            <div class="flap top"></div>
+            <div class="pocket"></div>
+            <div class="letter">
+                <div class="letter-content">
+                    <h1>Alice & Julien</h1>
+                    <p>ont la joie de vous inviter à leur mariage</p>
+                    <div class="date-seal">24 . 08 . 2026</div>
+                </div>
+            </div>
+            <div class="flap left"></div>
+            <div class="flap right"></div>
+            <div class="flap bottom"></div>
         </div>
-    </section>
+    </div>
 
-    <section class="rsvp">
-        <h2>Répondez s’il vous plaît</h2>
-        <form id="rsvp-form">
-            <input type="text" name="name" placeholder="Votre nom" required>
-            <input type="email" name="email" placeholder="Votre e-mail" required>
-            <button type="submit">Envoyer</button>
-        </form>
-        <p class="thanks hidden">Merci ! On a hâte de vous voir 🎉</p>
-    </section>
+    <main class="main-content" id="full-content">
+        
+        <header class="hero">
+            <h2>Nous nous marions !</h2>
+            <p class="hero-date">Samedi 24 Août 2026</p>
+            <p class="location">Château de la Roche, France</p>
+        </header>
 
-    <footer>
-        <p>À bientôt ! 💖</p>
-    </footer>
-</header>
+        <section class="countdown-section">
+            <h3>Le grand jour arrive dans...</h3>
+            <div id="countdown">
+                <div><span id="days">00</span>Jours</div>
+                <div><span id="hours">00</span>Heures</div>
+                <div><span id="minutes">00</span>Minutes</div>
+                <div><span id="seconds">00</span>Secondes</div>
+            </div>
+        </section>
 
-<script src="script.js"></script>
+        <section class="timeline">
+            <h3>Le Programme</h3>
+            <div class="timeline-item">
+                <span class="time">14:00</span>
+                <span class="event">Cérémonie Civile</span>
+            </div>
+            <div class="timeline-item">
+                <span class="time">16:00</span>
+                <span class="event">Vin d'honneur</span>
+            </div>
+            <div class="timeline-item">
+                <span class="time">20:00</span>
+                <span class="event">Dîner & Soirée</span>
+            </div>
+        </section>
+
+        <section class="rsvp">
+            <h3>Répondez-nous</h3>
+            <form id="rsvp-form" onsubmit="event.preventDefault(); alert('Merci pour votre réponse !');">
+                <input type="text" placeholder="Votre Nom" required>
+                <select>
+                    <option>Je serai présent(e)</option>
+                    <option>Je ne pourrai pas venir</option>
+                </select>
+                <input type="number" placeholder="Nombre de personnes" min="1">
+                <button type="submit">Confirmer</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>Avec tout notre amour, Alice & Julien</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

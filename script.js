@@ -1,26 +1,44 @@
-// Intro Screen Click
-document.getElementById('intro-screen').addEventListener('click', () => {
-    document.getElementById('intro-screen').classList.add('hidden');
-    document.getElementById('main-content').classList.remove('hidden');
-});
+function openEnvelope() {
+    const envelope = document.querySelector('.envelope');
+    const fullContent = document.getElementById('full-content');
+    const envelopeSection = document.getElementById('envelope-section');
 
-// Countdown Timer
-const weddingDate = new Date("Aug 28, 2026 15:00:00").getTime();
-const countdownEl = document.getElementById("countdown");
-setInterval(() => {
+    // Ajoute la classe qui déclenche l'animation CSS
+    envelope.classList.add('open');
+
+    // Après l'animation de l'enveloppe (1.5s), on affiche le contenu
+    setTimeout(() => {
+        // Optionnel : faire disparaître l'enveloppe ou la laisser en haut
+        // Ici, on fait défiler doucement vers le contenu
+        fullContent.classList.add('visible');
+        
+        // Scroll automatique fluide vers le contenu
+        fullContent.scrollIntoView({ behavior: 'smooth' });
+    }, 1500);
+}
+
+// --- Compte à rebours ---
+const weddingDate = new Date('August 24, 2026 14:00:00').getTime();
+
+const countdownTimer = setInterval(function() {
     const now = new Date().getTime();
-    const diff = weddingDate - now;
+    const distance = weddingDate - now;
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+    // Calculs de temps
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdownEl.innerHTML = `${days}j ${hours}h ${mins}m ${secs}s`;
+    // Affichage
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+    // Si la date est passée
+    if (distance < 0) {
+        clearInterval(countdownTimer);
+        document.getElementById("countdown").innerHTML = "Nous sommes mariés !";
+    }
 }, 1000);
-
-// RSVP Form
-document.getElementById('rsvp-form').addEventListener('submit', e => {
-    e.preventDefault();
-    document.querySelector('.thanks').classList.remove('hidden');
-});
