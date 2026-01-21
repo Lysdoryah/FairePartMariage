@@ -1,13 +1,12 @@
 const envelope = document.getElementById("envelope");
-const invitation = document.getElementById("invitation");
-const envelopeBox = document.querySelector(".envelope");
+const envelopeScreen = document.getElementById("envelopeScreen");
+const invitationScreen = document.getElementById("invitationScreen");
 
 envelope.addEventListener("click", () => {
-  envelopeBox.classList.add("open");
+  envelope.classList.add("open");
 
   setTimeout(() => {
-    envelope.style.display = "none";
-    invitation.classList.remove("hidden");
-    document.body.style.overflow = "auto";
+    envelopeScreen.classList.add("hidden");
+    invitationScreen.classList.remove("hidden");
   }, 800);
 });

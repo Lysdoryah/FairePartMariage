@@ -1,44 +1,35 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Notre mariage</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
 
-<!-- ÉCRAN ENVELOPPE -->
-<div class="envelope-screen" id="envelope">
-  <div class="envelope">
-    <div class="seal">💍</div>
-  </div>
-  <p class="hint">Touchez pour ouvrir</p>
-</div>
-
-<!-- ÉCRAN INVITATION -->
-<div class="invitation-screen hidden" id="invitation">
-  <section class="card">
-    <h1>Marie & Julien</h1>
-    <p class="subtitle">
-      ont la joie de vous inviter à célébrer leur mariage
-    </p>
-
-    <div class="infos">
-      <p>📅 12 juillet 2026</p>
-      <p>📍 Château de la Roseraie</p>
+    <div id="envelopeScreen" class="screen envelope-screen">
+      <div id="envelope" class="envelope">
+        <div class="flap"></div>
+        <div class="body"></div>
+        <div class="seal">💍</div>
+      </div>
+      <p class="hint">Touchez pour ouvrir</p>
     </div>
-  </section>
-
-  <section class="card">
-    <h2>Programme</h2>
-    <p>15h — Cérémonie</p>
-    <p>18h — Cocktail</p>
-    <p>20h — Dîner & fête</p>
-  </section>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+    
+    <div id="invitationScreen" class="screen invitation-screen hidden">
+      <section class="card">
+        <h1>Marie & Julien</h1>
+        <p class="subtitle">
+          ont la joie de vous inviter à célébrer leur mariage
+        </p>
+    
+        <div class="infos">
+          <p>📅 12 juillet 2026</p>
+          <p>📍 Château de la Roseraie</p>
+        </div>
+      </section>
+    
+      <section class="card">
+        <h2>Programme</h2>
+        <p>15h — Cérémonie</p>
+        <p>18h — Cocktail</p>
+        <p>20h — Dîner & fête</p>
+      </section>
+    </div>
+    
+    <script src="script.js"></script>
+    </body>
+    
