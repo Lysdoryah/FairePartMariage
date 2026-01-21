@@ -9,7 +9,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
 
-/* --- ENVELOPPE & CALQUE --- */
+/* --- SECTION D'OUVERTURE (ENVELOPPE) --- */
 .envelope-wrapper {
     height: 100vh;
     display: flex;
@@ -26,6 +26,16 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     letter-spacing: 2px;
     text-transform: uppercase;
     animation: pulse 2s infinite;
+    text-align: center;
+}
+
+/* Texte adaptatif PC / Mobile */
+.instruction .pc-text { display: inline; }
+.instruction .mobile-text { display: none; }
+
+@media (max-width: 1024px) {
+    .instruction .pc-text { display: none; }
+    .instruction .mobile-text { display: inline; }
 }
 
 .family-name {
@@ -33,13 +43,19 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     top: -180px;
     width: 100%;
     text-align: center;
-    font-family:'Great Vibes';
+    font-family: 'Great Vibes', cursive;
     font-size: 2.8rem;
     color: var(--secondary);
     transition: opacity 0.5s;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
-.envelope-scaler { position: relative; width: 300px; height: 200px; }
+.envelope-scaler { 
+    position: relative; 
+    width: 300px; 
+    height: 200px; 
+    z-index: 1; 
+}
 
 .envelope {
     position: relative;
@@ -49,86 +65,93 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.4);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    z-index: 10;
 }
 
-.flap {
-    position: absolute; width: 0; height: 0; border-style: solid;
-    z-index: 100;
-}
-.envelope .top {
-    top: 0;
-    left: 0;
-    border-width: 100px 150px 0 150px;
-    border-color: rgba(255,255,255,0.4) transparent transparent transparent;
-    z-index: 100;
-    transform-origin: top;
-    transition: transform 0.6s 0.2s ease-in-out;
-}
-
-.envelope .bottom {
-    bottom: 0;
-    left: 0;
-    border-width: 0 150px 100px 150px;
-    border-color: transparent transparent rgba(255,255,255,0.4) transparent;
-    z-index: 99;
-}
-
-.envelope .left {
-    top: 0;
-    left: 0;
-    border-width: 100px 0 100px 150px;
-    border-color: transparent transparent transparent rgba(255,255,255,0.336);
-    z-index: 98;
-}
-
-.envelope .right {
-    top: 0;
-    right: 0;
-    border-width: 100px 150px 100px 0;
-    border-color: transparent rgba(255, 255, 255, 0.336) transparent transparent;
-    z-index: 98;
-}
-
-/* Sceau de cire */
-.wax-seal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px; /* Tu peux ajuster la taille ici */
-    height: 80px;
-    background-image: url('assets/sceau-cire.png'); /* METS LE LIEN DE TON IMAGE ICI */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    
-    transform: translate(-50%, -50%);
-    z-index: 110;
-    
-    /* Optionnel : ajoute une ombre pour donner du relief à ton image */
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); 
-    
-    transition: opacity 0.4s ease;
-    cursor: pointer;
-}
-.envelope.open .top { transform: rotateX(180deg); z-index: 50; }
-.envelope.open .wax-seal { opacity: 0; }
-
+/* LA LETTRE (DEDANS AU DÉBUT) */
 .letter {
-    position: absolute; top: 50%; left: 50%;
+    position: absolute; 
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 280px; height: 180px;
     background: var(--primary);
     border: 1.5px solid var(--secondary);
     color: white; padding: 20px; text-align: center;
-    z-index: 80;
-    transition: transform 0.8s 0.5s ease;
+    z-index: 15; /* Sous les rabats (30-50) */
+    transition: transform 0.8s 0.5s ease-in-out;
 }
 
-.envelope.open .letter { transform: translate(-50%, -260px); z-index: 105; }
+.letter h1 { font-family: 'Great Vibes'; font-size: 2.2rem; color: var(--secondary); margin-bottom: 10px; }
 
-.letter h1 { font-family: 'Great Vibes'; font-size: 2.2rem; color: var(--secondary); }
+/* LES RABATS */
+.flap {
+    position: absolute; width: 0; height: 0; border-style: solid;
+}
 
-/* --- CONTENU DU SITE --- */
+.envelope .top {
+    top: 0; left: 0;
+    border-width: 100px 150px 0 150px;
+    border-color: rgba(255,255,255,0.4) transparent transparent transparent;
+    z-index: 50; /* Doit être au-dessus du reste pour fermer */
+    transform-origin: top;
+    transition: transform 0.6s 0.2s ease-in-out;
+}
+
+.envelope .bottom {
+    bottom: 0; left: 0;
+    border-width: 0 150px 100px 150px;
+    border-color: transparent transparent rgba(255,255,255,0.4) transparent;
+    z-index: 40;
+}
+
+.envelope .left {
+    top: 0; left: 0;
+    border-width: 100px 0 100px 150px;
+    border-color: transparent transparent transparent rgba(255,255,255,0.336);
+    z-index: 30;
+}
+
+.envelope .right {
+    top: 0; right: 0;
+    border-width: 100px 150px 100px 0;
+    border-color: transparent rgba(255, 255, 255, 0.336) transparent transparent;
+    z-index: 30;
+}
+
+/* LE SCEAU (IMAGE) */
+.wax-seal {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 80px; 
+    height: 80px;
+    background-image: url('assets/sceau-cire.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    z-index: 60; /* Par-dessus le rabat Top (50) */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); 
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+}
+
+/* --- ANIMATIONS D'OUVERTURE --- */
+.envelope.open .top { 
+    transform: rotateX(180deg); 
+    z-index: 20; /* Passe derrière la lettre quand ouvert */
+}
+
+.envelope.open .wax-seal { 
+    opacity: 0; 
+    pointer-events: none;
+}
+
+.envelope.open .letter { 
+    transform: translate(-50%, -260px); 
+    z-index: 100; /* Devient l'élément le plus haut pour sortir */
+}
+
+/* --- CONTENU DU SITE (APRÈS OUVERTURE) --- */
 .main-content { display: none; opacity: 0; transition: opacity 1s; }
 .main-content.visible { display: block; opacity: 1; }
 
@@ -137,8 +160,9 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     background: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1500&q=80') center/cover;
     display: flex; align-items: center; justify-content: center;
 }
+
 .hero-overlay { background: rgba(0,0,0,0.5); padding: 40px; color: white; text-align: center; border: 2px solid var(--secondary); }
-.hero h2 { font-size: 3.5rem; color: var(--secondary); }
+.hero h2 { font-size: 3.5rem; color: var(--secondary); font-family: 'Great Vibes'; }
 
 .section-container { padding: 80px 20px; max-width: 800px; margin: 0 auto; text-align: center; }
 .time-box span { display: block; font-size: 2.5rem; color: var(--primary); font-weight: bold; }
@@ -149,13 +173,22 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
 .rsvp-card { background: #f9f9f9; padding: 40px; border-radius: 10px; border: 1px solid var(--primary); }
 .form-group { margin-bottom: 15px; text-align: left; }
 input, select, textarea { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
-button { background: var(--primary); color: white; border: none; padding: 15px 30px; cursor: pointer; width: 100%; font-size: 1.1rem; }
+button { background: var(--primary); color: white; border: none; padding: 15px 30px; cursor: pointer; width: 100%; font-size: 1.1rem; transition: 0.3s; }
+button:hover { background: #1e453a; }
 
 footer { background: var(--primary); color: white; padding: 40px; text-align: center; }
 .footer-names { font-family: 'Great Vibes'; font-size: 2rem; color: var(--secondary); }
 
+/* --- KEYFRAMES & RESPONSIVE --- */
 @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
 @media (min-width: 1024px) {
     .envelope-scaler { transform: scale(1.8); margin-top: 50px; }
+}
+
+@media (max-width: 600px) {
+    .family-name { font-size: 2rem; top: -100px; }
+    #countdown { gap: 10px; }
+    .time-box { padding: 10px; min-width: 60px; }
+    .time-box span { font-size: 1.5rem; }
 }
