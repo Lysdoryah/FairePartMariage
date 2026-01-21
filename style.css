@@ -1,9 +1,9 @@
 :root {
     --primary: #2e6656; /* Vert foncé invitation */
-    --secondary: #d4af37; /* Or */
-    --bg-dark: #1a3a32; /* Fond pour faire ressortir le calque */
+    --secondary: #ffffff; /* Or */
+    --bg-dark: rgb(136, 136, 172);/* Fond pour faire ressortir le calque */
     --text-light: #f4f4f4;
-    --calque-white: rgba(255, 255, 255, 0.35);
+    --calque-white: rgba(211, 209, 209, 0.432);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,7 +16,7 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #2e4a41 100%);
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #7bb3a1 100%);
     transition: opacity 1s ease;
 }
 
@@ -75,7 +75,6 @@ body { font-family: 'Lato', sans-serif; background: #fff; overflow-x: hidden; }
     transform: translate(-50%, -50%);
     width: 280px; height: 180px;
     background: var(--primary);
-    border: 1.5px solid var(--secondary);
     color: white; padding: 20px; text-align: center;
     z-index: 20; 
     transition: transform 0.8s 0.5s ease-in-out;
