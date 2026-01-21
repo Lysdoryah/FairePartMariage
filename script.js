@@ -6,7 +6,7 @@ envelope.addEventListener("click", () => {
   envelope.classList.add("open");
 
   setTimeout(() => {
-    envelopeScreen.classList.add("hidden");
-    invitationScreen.classList.remove("hidden");
+    envelopeScreen.classList.remove("visible");
+    invitationScreen.classList.add("visible");
   }, 800);
 });
