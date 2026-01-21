@@ -5,7 +5,7 @@ window.onload = function() {
     
     if (hash && nameDisplay) {
         const cleanName = decodeURIComponent(hash).replace(/-/g, ' ');
-        nameDisplay.innerText = cleanName;
+        nameDisplay.innerText = ""+cleanName;
     }
 };
 
