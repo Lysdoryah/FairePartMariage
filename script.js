@@ -1,11 +1,10 @@
 window.onload = function() {
-    // Analyse l'URL pour trouver un nom après le #
-    // Exemple : monsite.fr/#Famille-Dupont
-    const hash = window.location.hash.substring(1);
+    // Récupère le nom après le # dans l'URL
+    let hash = window.location.hash.substring(1);
     const nameDisplay = document.getElementById('family-name-display');
     
     if (hash && nameDisplay) {
-        const cleanName = hash.replace(/-/g, ' ');
+        const cleanName = decodeURIComponent(hash).replace(/-/g, ' ');
         nameDisplay.innerText = cleanName;
     }
 };
