@@ -37,10 +37,17 @@
             <div class="hero-overlay">
                 <h2>Nous nous marions !</h2>
                 <p class="hero-date">Samedi 15 Août 2026</p>
-                <p class="location">Château de la Roche, France</p>
+                <p class="location">Salle des fêtes de Nordouse, France</p>
             </div>
         </header>
 
+        <div id="scroll-hint" class="scroll-indicator-container">
+            <p>Découvrez le programme</p>
+            <div class="mouse-icon">
+                <div class="wheel"></div>
+            </div>
+        </div>
+        
         <section class="section-container countdown-section">
             <h3>Le grand jour arrive dans...</h3>
             <div id="countdown">
@@ -52,53 +59,95 @@
         </section>
 
         <section class="section-container timeline-section">
-            <h3>Le Programme</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon">1</div>
+            <h3>Le fil de la journée</h3>
+            
+            <div class="timeline-container">
+                <div class="timeline-block reveal-on-scroll">
+                    <div class="timeline-date">
+                        <p>Vendredi 14 Aout 2026</p>
+                        <p>à 10:00</p>  
+                    </div>
+                    <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <span class="time">14:00</span>
-                        <h4>Cérémonie Civile</h4>
+                        <h4><i class="fas fa-landmark"></i> Cérémonie Civile</h4>
+                        <p>Mairie de la ville</p>
+                        <span class="detail">Le grand "Oui" officiel !</span>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">2</div>
+
+                <div class="timeline-block reveal-on-scroll">
+                    <div class="timeline-date">
+                        <p>Vendredi 14 Aout 2026</p>
+                        <p>à 14:00</p>  
+                    </div>
+                    <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <span class="time">16:30</span>
-                        <h4>Vin d'honneur</h4>
+                        <h4><i class="fas fa-landmark"></i>Dicours</h4>
+                        <p>Salle du royaume de Erstein</p>
+                        <span class="detail">Les rappels bibliques</span>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">3</div>
+
+                <div class="timeline-block reveal-on-scroll">
+                    <div class="timeline-date">
+                        <p>Samedi 15 Aout 2026</p>
+                        <p>à 14:00</p> 
+                    </div>
+                    <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <span class="time">20:00</span>
-                        <h4>Dîner & Soirée</h4>
+                        <h4><i class="fas fa-glass-cheers"></i> Vin d'Honneur</h4>
+                        <p>Jardins du Château</p>
+                        <span class="detail">Rafraîchissements & Photos de groupe</span>
+                    </div>
+                </div>
+
+                <div class="timeline-block reveal-on-scroll">
+                    <div class="timeline-date">
+                        <p>Samedi 15 Aout 2026</p>
+                        <p>à 17:00</p> 
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4><i class="fas fa-utensils"></i> Dîner & Soirée</h4>
+                        <p>Grande Salle</p>
+                        <span class="detail">Repas gastronomique suivi du dancefloor</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="section-container infos-section">
-            <h3>Les infos pratiques</h3>
-            <div class="infos">
-                <div class="infos-item">
-                    <div class="timeline-content">
-                        Thème : Pastel ! 
-                    </div>
+            <h3>Informations Essentielles</h3>
+            <div class="info-grid">
+                <div class="info-card reveal-on-scroll">
+                    <i class="fas fa-palette icon-large"></i>
+                    <h4>Thème</h4>
+                    <p>Notre mariage sera aux couleurs <strong>Pastel & Nature</strong>.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">2</div>
-                    <div class="timeline-content">
-                        <span class="time">16:30</span>
-                        <h4>Vin d'honneur</h4>
-                    </div>
+                <div class="info-card reveal-on-scroll">
+                    <i class="fas fa-tshirt icon-large"></i>
+                    <h4>Dress Code</h4>
+                    <p>Une tenue élégante et confortable. Une touche de couleur est la bienvenue !</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">3</div>
-                    <div class="timeline-content">
-                        <span class="time">20:00</span>
-                        <h4>Dîner & Soirée</h4>
-                    </div>
+                <div class="info-card reveal-on-scroll">
+                    <i class="fas fa-bed icon-large"></i>
+                    <h4>Hébergement</h4>
+                    <p>Des gîtes sont disponibles à 5min du château. <br><a href="#">Voir la liste</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-container contact-orga reveal-on-scroll">
+            <div class="contact-box">
+                <h3>Une surprise ou un coup de main ?</h3>
+                <p>
+                    Si vous souhaitez contribuer à la magie de cette journée par une animation, un discours, 
+                    ou si vous voulez proposer votre aide pour le bon déroulement de l'organisation le jour J, 
+                    nous vous invitons à vous rapprocher de notre coordinatrice :
+                </p>
+                <div class="contact-details">
+                    <strong>Nom de la Wedding Planner / Témoin</strong><br>
+                    <a href="mailto:email@exemple.com">email@exemple.com</a> | 06.00.00.00.00
                 </div>
             </div>
         </section>
@@ -123,11 +172,7 @@
                         <input type="number" name="adults" min="0" value="1">
                     </div>
                     <div class="form-group">
-                        <label>Nombre d'enfant</label>
-                        <input type="number" name="children" min="0" value="1">
-                    </div>
-                    <div class="form-group">
-                        <label>Message ou régime particulier</label>
+                        <label>Message pour les mariés</label>
                         <textarea name="message"></textarea>
                     </div>
                     <button type="submit">Envoyer la réponse</button>
@@ -136,8 +181,8 @@
         </section>
 
         <footer>
-            <p class="footer-names">Alice & Julien</p>
-            <p>24.08.2026</p>
+            <p class="footer-names">Cécile & Cyrille</p>
+            <p>15.08.2026</p>
         </footer>
     </main>
 

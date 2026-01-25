@@ -45,3 +45,36 @@ setInterval(() => {
     document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
 }, 1000);
+
+// Animation au scroll (Intersection Observer)
+const observerOptions = {
+    threshold: 0.2 // Déclenche quand 20% de l'élément est visible
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Optionnel : arrêter d'observer une fois apparu
+            // observer.unobserve(entry.target); 
+        }
+    });
+}, observerOptions);
+
+// Cible tous les éléments qui ont la classe 'reveal-on-scroll'
+document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+    observer.observe(el);
+});
+
+// Gestion de l'indicateur de scroll
+window.addEventListener('scroll', function() {
+    const scrollHint = document.getElementById('scroll-hint');
+    
+    // Si on a scrollé de plus de 50px, on cache l'indicateur
+    if (window.scrollY > 50) {
+        scrollHint.classList.add('hidden');
+    } else {
+        // Si on remonte tout en haut, on le réaffiche (optionnel)
+        scrollHint.classList.remove('hidden');
+    }
+});
