@@ -161,7 +161,7 @@ body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden;
     color: var(--primary);
 }
 
-.hero-overlay { background: rgb(105, 133, 115); padding: 40px; color: white; text-align: center; border: 2px solid var(--secondary); }
+.hero-overlay {  padding: 40px; color: var(--secondary); text-align: center; border: 2px solid var(--secondary); }
 
 .section-container { padding: 80px 20px; max-width: 100%; margin: 0 auto; text-align: center; }
 .time-box span { display: block; font-size: 2.5rem; color: var(--primary); font-weight: bold; }
@@ -188,7 +188,7 @@ body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden;
 }
 #countdown .time-box{
     width: 80px;
-    border: solid 3px #f9f9f9;
+    border: solid 3px var(--secondary);
     border-radius: 20px;
 }
 
@@ -308,14 +308,14 @@ body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden;
 }
 .mouse-icon {
     width: 30px; height: 50px;
-    border: 2px solid var(--secondary);
+    border: 2px solid white;
     border-radius: 20px;
     margin: 10px auto 0;
     position: relative;
 }
 .wheel {
     width: 4px; height: 8px;
-    background: var(--primary);
+    background: white;
     position: absolute;
     top: 8px; left: 50%;
     transform: translateX(-50%);
@@ -340,7 +340,7 @@ body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden;
     position: absolute;
     top: 0; bottom: 0; left: 50%;
     width: 2px;
-    background: var(--secondary);
+    background: white;
     transform: translateX(-50%);
 }
 
@@ -367,7 +367,7 @@ body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden;
     padding-right: 30px;
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--primary);
+    color: rgb(136, 170, 148);
     font-size: 0.9rem;
 }
 .timeline-marker {
@@ -383,8 +383,7 @@ body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden;
     padding-left: 30px;
     text-align: left;
 }
-.timeline-content h4 { color: var(--primary); margin-bottom: 5px; }
-.timeline-content .detail { font-style: italic; font-size: 0.9rem; color: #666; }
+.timeline-content .detail { font-style: italic; font-size: 0.9rem; color: #305136; }
 
 /* --- CARTES INFOS --- */
 .info-grid {
@@ -396,21 +395,19 @@ body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden;
 }
 .info-card {
     background: white;
+    color: var(--secondary);
     padding: 30px;
     border-radius: 15px;
     width: 280px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-bottom: 3px solid var(--secondary);
-    border-right: 3px solid var(--secondary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 3px solid var(--secondary);
     opacity: 0; transform: translateY(30px);
     transition: all 0.6s ease-out;
 }
 .icon-large { font-size: 2rem; color: var(--secondary); margin-bottom: 15px; }
-
 /* --- CONTACT --- */
 .contact-orga {
     background: #eef3f1; /* Fond très léger */
-    margin-top: 60px;
     opacity: 0;
     transition: opacity 1s;
 }
@@ -418,10 +415,9 @@ body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden;
 .contact-details {
     margin-top: 20px;
     padding: 20px;
-    background: white;
     display: inline-block;
     border-radius: 10px;
-    border: 1px dashed var(--secondary);
+    border: 3px solid white;
 }
 
 /* RESPONSIVE TIMELINE */
@@ -459,8 +455,60 @@ footer { background: var(--primary); color: white; padding: 40px; text-align: ce
     .time-box span { font-size: 1.5rem; }
 }
 
-h3{
+/* --- SCROLL MOUSE RESPONSIVE --- */
+@media (min-width: 1024px) {
+    /* On agrandit la souris sur les grands écrans */
+    .mouse-icon {
+        width: 50px;       /* Plus large */
+        height: 75px;      /* Plus haute */
+        border-width: 3px; /* Bordure un peu plus épaisse */
+    }
+    
+    .wheel {
+        width: 6px;        /* Molette plus grosse */
+        height: 12px;
+        top: 12px;
+    }
+
+    /* Optionnel : Si tu veux le décaler un peu plus du bord sur grand écran */
+    #scroll-hint {
+        right: 40px; 
+        bottom: 40px;
+    }
+}
+
+/* --- ALTERNANCE DES COULEURS INVERSÉE --- */
+
+/* SECTIONS 1, 3, 5... (Impair) : Fond BLANC / Texte VERT */
+.section-container:nth-of-type(odd) {
+    background-color: white;
     color: var(--secondary);
-    font-size:xx-large;
-    font-family:Arial, Helvetica, sans-serif;
+}
+
+.section-container:nth-of-type(odd) h3,
+.section-container:nth-of-type(odd) h4,
+.section-container:nth-of-type(odd) i {
+    color: var(--secondary);
+}
+
+/* SECTIONS 2, 4, 6... (Pair) : Fond VERT / Texte BLANC */
+.section-container:nth-of-type(even) {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.section-container:nth-of-type(even) h3,
+.section-container:nth-of-type(even) h4,
+.section-container:nth-of-type(even) .time,
+.section-container:nth-of-type(even) i,
+.section-container:nth-of-type(even) p,
+.section-container:nth-of-type(even) .countdown-item span {
+    color: white;
+}
+
+/* Correction spécifique pour les éléments de liste/timeline sur fond vert */
+.section-container:nth-of-type(even) .timeline-marker,
+.section-container:nth-of-type(even) .timeline-item::before {
+    background: white;
+    border-color: var(--secondary);
 }
