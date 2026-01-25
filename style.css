@@ -85,7 +85,6 @@ body { font-family: 'Lato', sans-serif; background: #f9f9f9; overflow-x: hidden;
     border-radius: 10px;
     border-width: 100px 150px 0 150px;
     border-color: rgba(255,255,255,0.4) transparent transparent transparent;
-    box-shadow: inset 0px 0px 20px 5px rgba(124, 124, 124, 0.4); 
     z-index: 50; /* Doit être au-dessus du reste pour fermer */
     transform-origin: top;
     backdrop-filter: blur(2px);
