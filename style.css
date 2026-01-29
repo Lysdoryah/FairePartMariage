@@ -26,7 +26,7 @@ body {
    2. SECTION D'OUVERTURE (ENVELOPPE & LETTRE)
    ========================================================================== */
 .envelope-wrapper {
-    position: relative; /* Nécessaire pour les pseudo-éléments */
+
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -34,41 +34,6 @@ body {
     align-items: center;
     background: var(--secondary);
     transition: opacity 1s ease;
-    overflow: hidden; /* Important : évite les barres de défilement si l'image dépasse */
-}
-
-/* Configuration des fleurs d'angle */
-.envelope-wrapper::before,
-.envelope-wrapper::after {
-    content: '';
-    position: absolute;
-    width: 550px;  /* Beaucoup plus grand car c'est sur tout l'écran */
-    height: 550px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    pointer-events: none; /* TRÈS IMPORTANT : permet de cliquer sur l'enveloppe à travers les fleurs */
-    z-index: 0; /* Juste au-dessus du fond, mais derrière l'enveloppe */
-    opacity: 0.6; /* Transparence pour rester subtil */
-    
-    /* ASTUCE : Si ton image est noire, cela la rend blanche pour le fond sombre */
-    filter:  brightness(100); 
-}
-
-/* Coin Haut-Gauche */
-.envelope-wrapper::before {
-    top: 70px; 
-    left: 100px;
-    /* Même image que pour le hero (ou une autre) */
-    background-image: url('./assets/cadre_fleur.png');
-    transform: rotate(0deg); /* Rotation pour pointer vers le centre */
-}
-
-/* Coin Bas-Droit */
-.envelope-wrapper::after {
-    bottom: 70px;
-    right: 100px;
-    background-image: url('./assets/cadre_fleur.png');
-    transform: rotate(180deg); /* Rotation inverse */
 }
 
 .instruction {
@@ -119,7 +84,6 @@ body {
     position: absolute; 
     width: 0; 
     height: 0; 
-    border-style: solid;
     border-color: transparent;
 }
 
@@ -229,7 +193,7 @@ body {
 
 /* Hero Section */
 .hero {
-    padding: 40px 200px;
+    padding: 20% 5%;
     background: White;
 }
 
@@ -260,8 +224,8 @@ body {
 .hero-overlay::after {
     content: '';
     position: absolute;
-    width: 350px;  /* Ajuste la taille de la branche ici */
-    height: 350px;
+    width: 50%;  /* Ajuste la taille de la branche ici */
+    height: 50%;
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none; /* Permet de cliquer à travers l'image */
@@ -319,7 +283,8 @@ body {
     display: block;
     font-size: 2rem;
     font-weight: bold;
-    color: var(--primary); /* Attention: hérité de .time-box span */
+    color: white;
+    font-family: 'Digital7' ;
 }
 
 /* ==========================================================================
@@ -385,6 +350,52 @@ body {
     font-style: italic; 
     font-size: 0.9rem; 
     color: #305136; 
+}
+
+/* --- BOUTON GOOGLE MAPS TIMELINE --- */
+.timeline-action {
+    margin-top: 15px;
+}
+
+.maps-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid currentColor; /* Utilise la couleur du texte actuel */
+    font-weight: 500;
+}
+
+/* Style quand la section est blanche (Bouton Vert) */
+.section-container:nth-of-type(odd) .maps-btn {
+    color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.section-container:nth-of-type(odd) .maps-btn:hover {
+    background-color: var(--secondary);
+    color: white;
+}
+
+/* Style quand la section est verte (Bouton Blanc) */
+.section-container:nth-of-type(even) .maps-btn {
+    color: white;
+    border-color: white;
+}
+
+.section-container:nth-of-type(even) .maps-btn:hover {
+    background-color: white;
+    color: var(--secondary);
+}
+
+/* Petit effet de rebond au hover */
+.maps-btn:hover i {
+    transform: translateY(-2px);
+    transition: transform 0.2s;
 }
 
 /* Cartes d'informations */
@@ -584,10 +595,4 @@ footer {
     #countdown { gap: 10px; }
     .time-box { padding: 10px; min-width: 60px; }
     .time-box span { font-size: 1.5rem; }
-    .envelope-wrapper::before,
-    .envelope-wrapper::after {
-        width: 180px; /* Plus petit sur mobile */
-        height: 180px;
-        opacity: 0.4; /* Encore plus discret sur petit écran */
-    }
 }
