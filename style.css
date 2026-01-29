@@ -26,7 +26,7 @@ body {
    2. SECTION D'OUVERTURE (ENVELOPPE & LETTRE)
    ========================================================================== */
 .envelope-wrapper {
-
+    position: relative; /* Nécessaire pour les pseudo-éléments */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -34,6 +34,41 @@ body {
     align-items: center;
     background: var(--secondary);
     transition: opacity 1s ease;
+    overflow: hidden; /* Important : évite les barres de défilement si l'image dépasse */
+}
+
+/* Configuration des fleurs d'angle */
+.envelope-wrapper::before,
+.envelope-wrapper::after {
+    content: '';
+    position: absolute;
+    width: 50%;  /* Beaucoup plus grand car c'est sur tout l'écran */
+    height: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none; /* TRÈS IMPORTANT : permet de cliquer sur l'enveloppe à travers les fleurs */
+    z-index: 0; /* Juste au-dessus du fond, mais derrière l'enveloppe */
+    opacity: 0.6; /* Transparence pour rester subtil */
+    
+    /* ASTUCE : Si ton image est noire, cela la rend blanche pour le fond sombre */
+    filter:  brightness(100); 
+}
+
+/* Coin Haut-Gauche */
+.envelope-wrapper::before {
+    top: 70px; 
+    left: 100px;
+    /* Même image que pour le hero (ou une autre) */
+    background-image: url('./assets/cadre_fleur.png');
+    transform: rotate(0deg); /* Rotation pour pointer vers le centre */
+}
+
+/* Coin Bas-Droit */
+.envelope-wrapper::after {
+    bottom: 70px;
+    right: 100px;
+    background-image: url('./assets/cadre_fleur.png');
+    transform: rotate(180deg); /* Rotation inverse */
 }
 
 .instruction {
@@ -595,4 +630,8 @@ footer {
     #countdown { gap: 10px; }
     .time-box { padding: 10px; min-width: 60px; }
     .time-box span { font-size: 1.5rem; }
+    .envelope-wrapper::after,
+    .envelope-wrapper::before{
+        opacity: 0;
+    }
 }
