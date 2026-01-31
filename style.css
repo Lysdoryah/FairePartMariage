@@ -628,6 +628,34 @@ footer {
    9. MEDIA QUERIES (RESPONSIVE)
    ========================================================================== */
 
+/* On cible le h2 qui est dans le header hero */
+.hero h2 {
+    /* La formule magique : 
+       - Minimum : 2rem (environ 32px -> assez petit pour mobile)
+       - Idéal : 6% de la largeur de l'écran
+       - Maximum : 5rem (grand écran) */
+    font-size: clamp(2rem, 6vw, 5rem) !important;
+    
+    /* On s'assure qu'il prenne toute la largeur mais avec des marges */
+    width: 90%; 
+    margin: 0 auto 20px auto; /* Centré */
+    
+    /* Pour éviter que les lettres soient coupées */
+    line-height: 1.2;
+    padding: 0 10px;
+    
+    /* Si jamais le mot est encore trop long */
+    overflow-wrap: break-word; 
+    hyphens: auto;
+}
+
+/* Force l'ajustement spécifique pour les très petits écrans (mobiles étroits) */
+@media (max-width: 400px) {
+    .hero h2 {
+        font-size: 1.8rem !important; /* On force plus petit */
+    }
+}
+
 /* Grands écrans */
 @media (min-width: 1024px) {
     .envelope-scaler { transform: scale(1.8); margin-top: 50px; }
